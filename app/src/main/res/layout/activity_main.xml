@@ -21,9 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/app_name"
-            android:textColor="@color/secondary"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            style="@style/title" />
     </FrameLayout>
 
     <androidx.fragment.app.FragmentContainerView
