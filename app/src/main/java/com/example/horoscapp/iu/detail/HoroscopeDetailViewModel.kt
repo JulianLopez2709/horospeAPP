@@ -18,16 +18,16 @@ class HoroscopeDetailViewModel @Inject constructor(private val getPredictionUseC
     private val _state =MutableStateFlow<HoroscopeDetailState>(HoroscopeDetailState.Loading)
     val state:StateFlow<HoroscopeDetailState> = _state
 
-    lateinit var horoscopeModel: HoroscopeModel
+    lateinit var horoscope: HoroscopeModel
     fun getHoroscope(sign:HoroscopeModel){
-        horoscopeModel = sign
+        horoscope = sign
         viewModelScope.launch {
             _state.value = HoroscopeDetailState.Loading
             val result = withContext(Dispatchers.IO){
                getPredictionUseCase(sign.name)
             }
             if (result != null){
-                _state.value = HoroscopeDetailState.Success(result.horoscope,result.sign,horoscopeModel)
+                _state.value = HoroscopeDetailState.Success(result.horoscope,result.sign,horoscope)
             }else{
                 _state.value = HoroscopeDetailState.Error("Ha ocurrido un error, intentelo mas tarde")
             }

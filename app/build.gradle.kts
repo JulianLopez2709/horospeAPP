@@ -21,14 +21,24 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            resValue("string","examplename","HoroscAPP")
+            buildConfigField("String","BASE_URL","\"https://newastro.vercel.app/\"")
+        }
+
+        getByName("debug"){
+            isDebuggable = true
+            resValue("string","examplename","[DEBUG] HoroscAPP")
+            buildConfigField("String","BASE_URL","\"https://newastro-debug.vercel.app/\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -38,6 +48,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
     /* esto se coloca si sele un error de versiones toochain 18
     kotlin{
