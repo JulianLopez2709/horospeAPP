@@ -22,5 +22,6 @@
     <string name="aquarius">Aquarius</string>
     <string name="pisces">Pisces</string>
 
-
+    <!-- luck  -->
+    <string name="share">Share</string>
 </resources>
